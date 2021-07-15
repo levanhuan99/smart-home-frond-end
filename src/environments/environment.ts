@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   API_URL:'http://192.168.0.102/',
+  API_WEATHER_KEY: '1a19d562449bc98a9e5c86525e89fa2c'
 };
 
 /*

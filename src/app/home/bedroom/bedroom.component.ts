@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {LightService} from '../services.service';
-
-
-import { Observable } from 'rxjs';
+import {LightService} from '../../services/services.service';
 @Component({
-  selector: 'app-body',
-  templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css']
+  selector: 'app-bedroom',
+  templateUrl: './bedroom.component.html',
+  styleUrls: ['./bedroom.component.css']
 })
-export class BodyComponent implements OnInit {
-
+export class BedroomComponent implements OnInit {
 
   private lightStatus:boolean = false;
   constructor(private lightService: LightService) { }
 
+
   ngOnInit(): void {
   }
-
   ChangeLightStatus() {
 
     console.log('start calling api!'); 

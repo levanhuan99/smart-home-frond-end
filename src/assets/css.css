@@ -23,12 +23,12 @@
   
   body {
     /* background-color: rgba(251, 89, 143, 0.61);  */
-    background-image: url('smart-house.jpg');
+    /* background-image: url('smart-house.jpg'); */
   }
   
   .dashboard {
     background-color: #f6f8fa;
-    width: 900px;
+    width: 1000px;
     border-radius: 0 0 20px -15px black;
     /* margin: auto; */
    }
@@ -100,7 +100,7 @@
           margin: auto;
           bottom: -15px; }
   
-  .appliances {
+  /* .appliances {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -292,7 +292,7 @@
         opacity: 1; }
       .appliance input:checked + label span::after {
         opacity: 0; }
-  
+   */
   .heading .title {
     margin: 0;
     font-size: 36px; }

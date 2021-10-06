@@ -1,0 +1,43 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Thiết bị</th>
+        <th scope="col">Trạng thái</th>
+        <th scope="col">Thông tin</th> 
+        <th scope="col">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>TB1</td>
+        <td>{{led1_stage}}</td>
+        <td>TT1</td>
+        <td> 
+          <button type="button" (click)="clickOnTB1()" class="btn btn-info">Bật</button> 
+          <button type="button" (click)="clickOffTB1()" class="btn btn-danger">Tắt</button> 
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>TB2</td>
+        <td>TT2</td>
+        <td>TT2</td>
+        <td> 
+          <button type="button" (click)="clickOnTB2()" class="btn btn-info">Bật</button> 
+          <button type="button" (click)="clickOffTB2()" class="btn btn-danger">Tắt</button> 
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>TB3</td>
+        <td>TT3</td>
+        <td>TT3</td>
+        <td> 
+          <button type="button" (click)="clickOnTB3()" class="btn btn-info">Bật</button> 
+          <button type="button" (click)="clickOffTB3()" class="btn btn-danger">Tắt</button> 
+        </td>
+      </tr>
+    </tbody>
+  </table>

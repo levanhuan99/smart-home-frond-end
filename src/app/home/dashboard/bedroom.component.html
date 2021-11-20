@@ -1,10 +1,10 @@
 <!-- <div class="appliances"  onload="createConnectToServer()"> -->
   <div class="appliances">
-  <div class="appliance" (click)="clickme()">
+  <div class="appliance" (click)="goToBedRoom()">
         <!-- <input type="checkbox" name="a" id="a"> -->
         <label for="a">
           <i class="l"></i>
-          <strong>DEV1</strong>
+          <strong>Phòng Ngủ</strong>
           <span data-o="opened" data-c="closed"></span>
           <small></small>
           <!-- <a routerLink="/bedroom-detail" routerLinkActive="active"> <button type="button" class="btn btn-light">Phòngngủ</button> </a>
@@ -15,31 +15,31 @@
  
     
 
-    <div class="appliance" >
+    <div class="appliance" (click)="goToLivingRoom()">
       <!-- <input type="checkbox" name="a" id="b"> -->
       <label for="b" > 
         <i class="r"></i>
-        <strong >DIV2</strong>
+        <strong >Phòng Khách</strong>
         <!-- <span data-o="opened" data-c="closed"></span> -->
         <small></small>
       </label>
     </div>
     
-    <div class="appliance">
+    <div class="appliance" (click)="goToKitcken()">
       <!-- <input type="checkbox" name="a" id="c"> -->
       <label for="c">
         <i class="a"></i>
-        <strong>DIV3</strong>
+        <strong>Phòng Bếp</strong>
         <!-- <span data-o="opened" data-c="closed"></span> -->
         <small></small>
       </label>
     </div>
     
-    <div class="appliance" >
+    <div class="appliance" (click)="goToBedRoom1()">
       <!-- <input type="checkbox" name="a" id="d"> -->
       <label for="d">
         <i class="f"></i>
-        <strong>DIV4</strong>
+        <strong>Phòng Ngủ 1</strong>
         <!-- <span data-o="opened" data-c="closed"></span> -->
         <small></small>
       </label>

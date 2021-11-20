@@ -10,6 +10,9 @@ import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
+import { LivingRoomComponent } from './home/dashboard/living-room/living-room.component';
+import { KitchenComponent } from './home/dashboard/kitchen/kitchen.component';
+import { Bedroom1Component } from './home/dashboard/bedroom1/bedroom1.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +22,9 @@ import { ChartsModule } from 'ng2-charts';
     LoginComponent,
     FooterComponent,
     DashboardComponent,
+    LivingRoomComponent,
+    KitchenComponent,
+    Bedroom1Component,
   ],
 
   imports: [

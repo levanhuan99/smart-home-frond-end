@@ -47,10 +47,24 @@ export class BedroomComponent implements OnInit {
   }
 
 
-  clickme(){
+  goToBedRoom(){
     console.log("clicked!");
     this.router.navigateByUrl('home/bedroom');
   } 
+  goToBedRoom1(){
+    console.log("clicked!");
+    this.router.navigateByUrl('home/bedroom1');
+  } 
+
+  goToLivingRoom(){
+    console.log("clicked!");
+    this.router.navigateByUrl('home/living-room');
+  } 
+  goToKitcken(){
+    console.log("clicked!");
+    this.router.navigateByUrl('home/kitchen');
+  } 
+
 
   //demo websocket
   // createConnectToServer(){

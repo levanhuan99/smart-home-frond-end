@@ -1,26 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-
 @Component({
-  selector: 'app-bedroom-detail',
-  templateUrl: './bedroom-detail.component.html',
-  styleUrls: ['./bedroom-detail.component.css']
+  selector: 'app-living-room',
+  templateUrl: './living-room.component.html',
+  styleUrls: ['./living-room.component.css']
 })
-export class BedroomDetailComponent implements OnInit {
+export class LivingRoomComponent implements OnInit {
 
   led1_stage :string;
   imagePathLamp1 = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
   imagePathFan1 = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
   lampStatus ='OFF';
   fanStatus= 'OFF';
-  
+
   constructor(private apiService:ApiService) { }
 
-  ngOnInit(): void {
-    //this.getStatus();
-  }
 
-  clickOnLamp1(){ 
+  ngOnInit(): void {
+  }
+clickOnLamp1(){ 
    
     this.imagePathLamp1 = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
     this.lampStatus = 'RUNNING';

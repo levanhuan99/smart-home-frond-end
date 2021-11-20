@@ -14,13 +14,14 @@ export class ApiService {
 
   }
 
-  turnLightOn(id:number):Observable<any>{
-    return this.http.get<any>(this.api_ip + 'light-on?id='+id.toString());
+  turnOn(postfixApi:string):Observable<any>{
+    return this.http.get<any>(this.api_ip + postfixApi);
   }
-  turnLightOff(id:number):Observable<any>{
-    return this.http.get<any>(this.api_ip + 'light-off?id='+id.toString());
+  turnOff(postfixApi:string):Observable<any>{
+    return this.http.get<any>(this.api_ip + postfixApi);
   }
 
+  
   getLedStage():Observable<any>{
     return this.http.get<any>(this.api_ip + 'led-status');
   }

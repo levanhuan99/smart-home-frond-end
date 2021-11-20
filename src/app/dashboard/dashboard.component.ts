@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
     responsive: true
   };
 
-  public barChartLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11','12','Tháng'];
+  public barChartLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11','12'];
    barChartType:string = 'bar';
   public barChartLegend = true;
 

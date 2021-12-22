@@ -23,6 +23,6 @@ export class ApiService {
 
   
   getLedStage():Observable<any>{
-    return this.http.get<any>(this.api_ip + 'led-status');
+    return this.http.get<any>(this.api_ip + 'get-all-status');
   }
 }

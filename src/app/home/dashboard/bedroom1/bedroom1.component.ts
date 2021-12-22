@@ -15,6 +15,12 @@ export class Bedroom1Component implements OnInit {
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
+
+    this.getStatus();
+      setInterval(() => {
+    this.getStatus(); 
+  }, 1000);
+
   }
 
   clickOnLamp1(){ 
@@ -88,13 +94,18 @@ export class Bedroom1Component implements OnInit {
 
 
   getStatus(){ 
+    console.log('interval work!');
     this.apiService.getLedStage().subscribe((res:any)=>{
+      //split data
+      const words = res.split(',');
+      console.log(words[0]);
+
       if(res == 'LOW'){
         this.led1_stage = 'OFF';
-
+        
       }else if(res == 'HIGH'){
         this.led1_stage = 'ON';
-
+        
       }else{
         this.led1_stage = 'UNKNOWN';
 
@@ -103,4 +114,5 @@ export class Bedroom1Component implements OnInit {
     });
     
   }
+
 }

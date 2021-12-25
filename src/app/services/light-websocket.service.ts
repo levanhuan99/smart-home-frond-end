@@ -8,7 +8,6 @@ import {environment} from '../../environments/environment';
 export class LightWebsocketService {
 
   constructor() { }
-  private esp8266_websocket_url:string = environment.WEBSOCKET_URL;
 
   private subject: Rx.Subject<MessageEvent>;
 
@@ -20,11 +19,11 @@ export class LightWebsocketService {
     return this.subject;
   }
 
-  public requestToServerEsp8266(urlStatus:string){
-    var websocket;
-    websocket = new WebSocket(this.esp8266_websocket_url);
-    websocket.send(urlStatus);
-  }
+  // public requestToServerEsp8266(urlStatus:string){
+  //   var websocket;
+  //   websocket = new WebSocket(this.esp8266_websocket_url);
+  //   websocket.send(urlStatus);
+  // }
 
 
   private create(url:string): Rx.Subject<MessageEvent> {

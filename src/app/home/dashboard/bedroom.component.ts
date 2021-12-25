@@ -1,6 +1,6 @@
 import { Attribute, Component, OnInit } from '@angular/core';
 import { LightWebsocketService } from 'src/app/services/light-websocket.service';
-import { WebsocketService } from 'src/app/services/websocket.service';
+
 import { environment } from 'src/environments/environment';
 import {LightService} from '../../services/services.service';
 import { Router } from '@angular/router';
@@ -13,13 +13,11 @@ export class BedroomComponent implements OnInit {
 
   private lightStatus:boolean = false;
 
-  private esp8266_websocket_url:string = environment.WEBSOCKET_URL;
-  
-  // private websocket = new WebSocket(this.esp8266_websocket_url);
+
 
   public currebtStatus:string;
 
-  constructor(private lightService: LightService, private lightWebsocketService: LightWebsocketService, private router : Router) { }
+  constructor(private lightService: LightService,  private router : Router) { }
 
 
   ngOnInit(): void {

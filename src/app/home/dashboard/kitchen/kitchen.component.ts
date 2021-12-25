@@ -7,45 +7,52 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class KitchenComponent implements OnInit {
 
-  led1_stage :string;
-  imagePathLamp1 = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
-  imagePathFan1 = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
+  led_stage :string;
+  imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
+  imagePathFan = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
   lampStatus ='OFF';
   fanStatus= 'OFF';
   
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
+    this.getStatus();
+    setInterval(() => {
+    this.getStatus(); 
+    }, 1000);
   }
 
-  clickOnLamp1(){ 
+  clickOnKitchenLamp(){ 
    
-    this.imagePathLamp1 = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
+    this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
     this.lampStatus = 'RUNNING';
     this.apiService.turnOn('light1-on').subscribe((res:any)=>{ 
-      console.log('light1-on: '+res);
-      // if(res == 'OK'){
-       
-      // }
-      console.log("clicked TB1 On ");
+      if(res == 'OK'){
+        this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
+        this.lampStatus = 'RUNNING';
+      }else{
+        console.log('Exception when call  api change lamp status!');
+      }
     });
   }
 
-  clickOffLamp1(){ 
-    this.imagePathLamp1 = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
+  clickOffKitchenLamp(){ 
+    this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
     this.lampStatus = 'OFF';
 
     this.apiService.turnOff('light1-off').subscribe((res:any)=>{
-      console.log('light1-off: '+res);
+      if(res == 'OK'){
+        this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
+        this.lampStatus = 'OFF';
 
-      // if(res=='OK'){
-      
-      // }
-      console.log("clicked TB1 off");
+      }else{
+        console.log('Exception when call  api change lamp status!');
+      }
     });
   }
-  clickOnFan1(){ 
-    this.imagePathFan1 = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
+
+  clickOnKitchenFan(){ 
+    this.imagePathFan = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
     this.fanStatus = 'RUNNING';
     // this.apiService.turnOn('fan1-on').subscribe((res:any)=>{
     //   console.log('fan1-on: '+res);
@@ -58,8 +65,8 @@ export class KitchenComponent implements OnInit {
     // });
   }
 
-  clickOffFan1(){ 
-    this.imagePathFan1 = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
+  clickOffKitchenFan(){ 
+    this.imagePathFan = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
     this.fanStatus = 'OFF';
     // this.apiService.turnOff('fan1-off').subscribe((res:any)=>{
     //   console.log('fan1-off: '+res);
@@ -71,37 +78,37 @@ export class KitchenComponent implements OnInit {
     // });
   }
 
-  clickOnTB3(){ 
+  clickOnKitchenTB(){ 
 
     this.apiService.turnOn('').subscribe((res:any)=>{
-      this.led1_stage = res;
+      this.led_stage = res;
       console.log("clicked TB3 On ");
     });
   }
 
-  clickOffTB3(){ 
+  clickOffKitchenTB(){ 
 
     this.apiService.turnOff('').subscribe((res:any)=>{
-      this.led1_stage = res;
+      this.led_stage = res;
       console.log("clicked TB3 off");
     });
   }
 
 
   getStatus(){ 
+
     this.apiService.getLedStage().subscribe((res:any)=>{
-      if(res == 'LOW'){
-        this.led1_stage = 'OFF';
-
-      }else if(res == 'HIGH'){
-        this.led1_stage = 'ON';
-
+      var words = res.split(',');
+      let currentLampStatus =  words[2];
+      if(currentLampStatus == '0'){
+        this.lampStatus = 'OFF';
+        this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
       }else{
-        this.led1_stage = 'UNKNOWN';
-
+        this.lampStatus = 'RUNNING';
+        this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
       }
-      console.log("clicked");
     });
     
   }
+
 }

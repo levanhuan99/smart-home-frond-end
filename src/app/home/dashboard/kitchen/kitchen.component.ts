@@ -16,16 +16,14 @@ export class KitchenComponent implements OnInit {
   constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
-    this.getStatus();
-    setInterval(() => {
-    this.getStatus(); 
-    }, 1000);
+    // this.getStatus();
+    // setInterval(() => {
+    // this.getStatus(); 
+    // }, 1000);
   }
-
+ 
   clickOnKitchenLamp(){ 
    
-    this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
-    this.lampStatus = 'RUNNING';
     this.apiService.turnOn('light1-on').subscribe((res:any)=>{ 
       if(res == 'OK'){
         this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
@@ -37,9 +35,6 @@ export class KitchenComponent implements OnInit {
   }
 
   clickOffKitchenLamp(){ 
-    this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
-    this.lampStatus = 'OFF';
-
     this.apiService.turnOff('light1-off').subscribe((res:any)=>{
       if(res == 'OK'){
         this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
@@ -52,30 +47,26 @@ export class KitchenComponent implements OnInit {
   }
 
   clickOnKitchenFan(){ 
-    this.imagePathFan = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
-    this.fanStatus = 'RUNNING';
-    // this.apiService.turnOn('fan1-on').subscribe((res:any)=>{
-    //   console.log('fan1-on: '+res);
+    this.apiService.turnOn('fan-4-on').subscribe((res:any)=>{
+      console.log('fan1-on: '+res);
 
-    //   if(res == 'OK'){
-    //     this.imagePathFan1 = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
-
-    //   }
-    //   console.log("clicked TB2 On ");
-    // });
+      if(res == 'OK'){
+        this.imagePathFan = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
+        this.fanStatus = 'ON';
+      }
+      console.log("clicked TB2 On ");
+    });
   }
 
   clickOffKitchenFan(){ 
-    this.imagePathFan = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
-    this.fanStatus = 'OFF';
-    // this.apiService.turnOff('fan1-off').subscribe((res:any)=>{
-    //   console.log('fan1-off: '+res);
-    //   if(res == 'OK'){
-    //     this.imagePathFan1 = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
-
-    //   }
-    //   console.log("clicked TB2 off");
-    // });
+    this.apiService.turnOff('fan-4-off').subscribe((res:any)=>{
+      console.log('fan1-off: '+res);
+      if(res == 'OK'){
+        this.imagePathFan = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
+        this.fanStatus ='OFF';
+      }
+      console.log("clicked TB2 off");
+    });
   }
 
   clickOnKitchenTB(){ 
@@ -100,12 +91,20 @@ export class KitchenComponent implements OnInit {
     this.apiService.getLedStage().subscribe((res:any)=>{
       var words = res.split(',');
       let currentLampStatus =  words[2];
+      let currentFanStatus = words[8];
       if(currentLampStatus == '0'){
         this.lampStatus = 'OFF';
         this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
       }else{
         this.lampStatus = 'RUNNING';
         this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
+      }
+      if(currentFanStatus == '0'){
+        this.imagePathFan = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
+        this.fanStatus = 'OFF';
+      }else{
+        this.imagePathFan = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
+        this.fanStatus = 'ON';
       }
     });
     

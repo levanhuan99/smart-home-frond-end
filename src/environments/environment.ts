@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_URL:'http://192.168.0.104/',
-  API_URL_LAMP:'http://192.168.0.105/',
+  API_URL_LAMP:'http://192.168.0.104/',
   API_WEATHER:'http://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=1a19d562449bc98a9e5c86525e89fa2c'
 };
 

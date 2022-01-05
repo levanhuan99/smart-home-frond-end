@@ -16,10 +16,10 @@ export class Bedroom1Component implements OnInit {
 
   ngOnInit(): void {
 
-    this.getStatus();
-      setInterval(() => {
-    this.getStatus(); 
-  }, 1000);
+  //   this.getStatus();
+  //     setInterval(() => {
+  //   this.getStatus(); 
+  // }, 1000);
 
   }
 
@@ -49,30 +49,27 @@ export class Bedroom1Component implements OnInit {
     });
   }
   clickOnFan(){ 
-    this.imagePathFan = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
-    this.fanStatus = 'RUNNING';
-    // this.apiService.turnOn('fan1-on').subscribe((res:any)=>{
-    //   console.log('fan1-on: '+res);
+    this.apiService.turnOn('fan-2-on').subscribe((res:any)=>{
+      console.log('fan1-on: '+res);
 
-    //   if(res == 'OK'){
-    //     this.imagePathFan1 = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
-
-    //   }
-    //   console.log("clicked TB2 On ");
-    // });
+      if(res == 'OK'){
+        this.imagePathFan = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
+        this.fanStatus = 'ON';
+      }
+      console.log("clicked TB2 On ");
+    });
   }
 
   clickOffFan(){ 
-    this.imagePathFan = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
-    this.fanStatus = 'OFF';
-    // this.apiService.turnOff('fan1-off').subscribe((res:any)=>{
-    //   console.log('fan1-off: '+res);
-    //   if(res == 'OK'){
-    //     this.imagePathFan1 = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
 
-    //   }
-    //   console.log("clicked TB2 off");
-    // });
+    this.apiService.turnOff('fan-2-off').subscribe((res:any)=>{
+      console.log('fan1-off: '+res);
+      if(res == 'OK'){
+        this.imagePathFan = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
+        this.fanStatus = 'OFF';
+      }
+      console.log("clicked TB2 off");
+    });
   }
 
   clickOnTB(){ 
@@ -97,6 +94,7 @@ export class Bedroom1Component implements OnInit {
     this.apiService.getLedStage().subscribe((res:any)=>{
       var words = res.split(',');
       let currentLampStatus =  words[4];
+      let currentFanStatus =  words[6];
       if(currentLampStatus == '0'){
         this.lampStatus = 'OFF';
         this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-light-cars-components-those-icons-lineal-those-icons.png';
@@ -104,7 +102,13 @@ export class Bedroom1Component implements OnInit {
         this.lampStatus = 'RUNNING';
         this.imagePathLamp = 'https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-light-cars-components-those-icons-lineal-color-those-icons.png';
       }
-
+      if(currentFanStatus == '0'){
+        this.imagePathFan = 'https://img.icons8.com/ios-filled/30/000000/ceiling-fan-off.png';
+        this.fanStatus = 'OFF';
+      }else{
+        this.imagePathFan = 'https://img.icons8.com/ultraviolet/30/000000/ceiling-fan-on.png'
+        this.fanStatus = 'ON';
+      }
     });
     
   }
